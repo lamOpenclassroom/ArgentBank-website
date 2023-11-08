@@ -100,6 +100,10 @@ body {
   font-size: 0.9rem;
 }
 
+i.fa.fa-user-circle {  /*<= Ajouter */
+  margin-right: 5px;
+}
+
 @media (min-width: 920px) {
   .hero {
     height: 400px;

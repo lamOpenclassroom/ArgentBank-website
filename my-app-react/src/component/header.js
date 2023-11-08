@@ -1,4 +1,4 @@
-import "../style/style.css"
+import Logobank from "../img/argentBankLogo.png"
 
 function Header() {
     return (
@@ -8,7 +8,7 @@ function Header() {
             <a class="main-nav-logo" href="./index.html">
               <img
                 class="main-nav-logo-image"
-                src="../img/argentBankLogo.png"
+                src={Logobank}
                 alt="Argent Bank Logo"
               />
               <h1 class="sr-only">Argent Bank</h1>

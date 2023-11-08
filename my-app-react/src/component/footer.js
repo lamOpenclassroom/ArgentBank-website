@@ -1,5 +1,3 @@
-import "../style/style.css"
-
 function Footer() {
     return (
         <footer class="footer">
