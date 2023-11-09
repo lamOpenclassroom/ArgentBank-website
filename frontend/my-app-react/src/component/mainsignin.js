@@ -1,4 +1,6 @@
 import "../style/style.css"
+import { Link } from 'react-router-dom'
+
 function Mainsignin() {
     return (
         <main class="main bg-dark">
@@ -19,8 +21,7 @@ function Mainsignin() {
                             <label for="remember-me">Remember me</label>
                         </div>
                         
-                        <a href="./user.html" class="sign-in-button">Sign In</a>
-                        
+                        <Link  class="sign-in-button" to="/signout">Sign In</Link>
                         {/* <button class="sign-in-button">Sign In</button>  */}
                     </form>
             </section>
