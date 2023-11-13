@@ -15,7 +15,14 @@ body {
 
 .main {
   flex: 1;
-}
+} 
+
+.bloc-signin{ /*ajout */
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+} 
 
 .bg-dark {
   background-color: #12002b;
@@ -100,6 +107,10 @@ body {
   font-size: 0.9rem;
 }
 
+i.fa.fa-user-circle {  /*<= Ajouter */
+  margin-right: 5px;
+}
+
 @media (min-width: 920px) {
   .hero {
     height: 400px;
@@ -175,7 +186,7 @@ body {
 }
 
 .sign-in-icon {
-  font-size: 5rem;
+  font-size: 16px;
 }
 
 .input-remember {

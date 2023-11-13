@@ -19,7 +19,12 @@ function Headeruser() {
                 <i class="fa fa-user-circle"></i>
                 Tony
               </a>
-              <Link  class="main-nav-item" to="/">Sign Out</Link>
+              <Link class="main-nav-item" to="/">
+                <a class="main-nav-item" href="./index.html">
+                <i class="fa fa-sign-out"></i>
+                  Sign Out
+                </a>
+              </Link>
             </div>
           </nav>
         </header>

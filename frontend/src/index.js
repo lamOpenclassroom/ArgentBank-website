@@ -7,6 +7,7 @@ import User from './pages/user'
  
 ReactDOM.render(
     <React.StrictMode>
+        {/* Provider store a mettre autour de Router */}
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
