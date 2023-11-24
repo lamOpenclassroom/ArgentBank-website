@@ -2,7 +2,7 @@ import { legacy_createStore as createStore } from 'redux';
 
 // le state 
 const initialState = {
-    email:"tony@stark.com",
+    token:"token", //ton state doit être ton token et connexion à garder
     connexion: true,
 }
 
