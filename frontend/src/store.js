@@ -2,23 +2,26 @@ import { legacy_createStore as createStore } from 'redux';
 
 // le state 
 const initialState = {
-    token:"token", //ton state doit être ton token et connexion à garder
-    connexion: true,
+    token:"", 
 }
 
 // les actions
-export const connexionUser = () => ({ type: "userConnect" })
+export const myAction = (data) => ({type:"LOGIN",payload: {token: data.body.token}})
 
 // le reducer
 function reducer(state = initialState,action) {
 
-    if (action.type === "userConnect") {
-        return {
-            ...state,
-            connexion: !state.connexion,
-        }
-    }
-    return state;
+    switch (action.type) { 
+        case 'LOGIN':
+           return {
+              ...state,
+              token: action.payload.token
+           };
+        case 'LOGOUT':
+           return initialState;
+        default:
+           return state;
+     }
 }
 
 //creer le store

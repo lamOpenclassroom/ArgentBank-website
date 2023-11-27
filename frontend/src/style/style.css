@@ -27,6 +27,14 @@ body {
 .bg-dark {
   background-color: #12002b;
 }
+/* ajout colorie message d'erreur */
+#connexion-valid{
+  color: green;
+}
+
+#erreur{
+  color: red;
+}
 
 .sr-only {
   border: 0 !important;
