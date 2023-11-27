@@ -2,24 +2,37 @@ import { legacy_createStore as createStore } from 'redux';
 
 // le state 
 const initialState = {
-    token:"", 
+   token: "", 
+   username: "",
+   firstname: "",
+   lastname: "",
 }
 
 // les actions
-export const myAction = (data) => ({type:"LOGIN",payload: {token: data.body.token}})
+export const myAction = (data) => ({ type: "LOGIN", payload: { token: data.body.token } })
 
 // le reducer
 function reducer(state = initialState,action) {
 
     switch (action.type) { 
-        case 'LOGIN':
-           return {
-              ...state,
-              token: action.payload.token
-           };
-        case 'LOGOUT':
-           return initialState;
-        default:
+         case 'LOGIN':
+         return {
+            ...state,
+            token: action.payload.token
+         };
+       
+         case 'DEFIN_USERNAME':
+         return {
+            ...state,
+            username: action.payload.username,
+            firstname: action.payload.firstname,
+            lastname: action.payload.lastname,
+         };
+         
+         case 'LOGOUT':
+            return initialState;
+         
+         default:
            return state;
      }
 }

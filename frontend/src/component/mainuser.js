@@ -1,8 +1,54 @@
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from 'react';
+
 function Mainuser() {
+    const dispatch = useDispatch();
+    const token = useSelector((state) => state.token); // Récupération du token ds Redux
+    const firstname = useSelector((state) => state.firstname); 
+    const lastname = useSelector((state) => state.lastname); 
+
+    useEffect(() => {
+        if (token) {
+           const getData = async () => {
+              try {
+              const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+                 method: 'POST',
+                 headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                
+              });
+     
+              if (response.ok) {
+                 const data = await response.json();
+                 console.log(data);
+                //Lancer l'action
+                 dispatch({  
+                  type: 'DEFIN_USERNAME',
+                  payload: {
+                    username: data.body.userName,
+                    firstname: data.body.firstName,
+                    lastname: data.body.lastName,
+                  },
+                });
+                 
+              } else {
+                 console.log("Erreur lors de la récupération du profil de l'utilisateur");
+              }
+              } catch (error) {
+                 console.log("Erreur lors de la récupération du profil de l'utilisateur");
+              }
+           };
+           
+           getData();
+    
+        }
+        }, [dispatch, token]);
     return (
         <main class="main bg-dark">
             <div class="header">
-                <h1>Welcome back<br />Tony Jarvis!</h1>
+                <h1>Welcome back<br />{firstname} {lastname} !</h1>
                 <button class="edit-button">Edit Name</button>
             </div>
             <h2 class="sr-only">Accounts</h2>
