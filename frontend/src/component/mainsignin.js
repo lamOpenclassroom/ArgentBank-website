@@ -40,7 +40,7 @@ function Mainsignin() {
             .then(response => response.json())  
             .then(data => {
                 console.log(data);
-                if (data.status !== 200) { // Gestion des erreurs
+                if (data.status !== 200 || email === "") { // Gestion des erreurs + sécurisé champs vide
                     document.getElementById("erreur").innerHTML = ("Erreur dans l’identifiant ou le mot de passe");
                     document.getElementById("connexion-valid").innerHTML = "";
                 }
