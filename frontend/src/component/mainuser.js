@@ -1,11 +1,15 @@
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from 'react';
+import { useDispatch, useSelector} from "react-redux"
+import { useEffect} from 'react';
+import Edituser from "./edituser";
+import { myActionEdit } from '../store'
 
 function Mainuser() {
     const dispatch = useDispatch();
     const token = useSelector((state) => state.token); // Récupération du token ds Redux
     const firstname = useSelector((state) => state.firstname); 
     const lastname = useSelector((state) => state.lastname); 
+    const showEdit = useSelector((state) => state.showEdit);
+    console.log(showEdit)
 
     useEffect(() => {
         if (token) {
@@ -44,13 +48,29 @@ function Mainuser() {
            getData();
     
         }
-        }, [dispatch, token]);
+    }, [dispatch, token]);
+    
+    function modaleEdit() {
+        //Lancer l'action
+        dispatch(myActionEdit()) 
+        console.log(showEdit)
+    }
+
+    
+
     return (
         <main class="main bg-dark">
-            <div class="header">
-                <h1>Welcome back<br />{firstname} {lastname} !</h1>
-                <button class="edit-button">Edit Name</button>
-            </div>
+            {showEdit ?  
+                <div class="header">
+                    <h1>Welcome back<br />{firstname} {lastname} !</h1>
+                    <button onClick={modaleEdit} class="edit-button">Edit Name</button> 
+                </div>
+                :
+                <div><Edituser /></div>
+            }
+
+            
+
             <h2 class="sr-only">Accounts</h2>
             <section class="account">
                 <div class="account-content-wrapper">

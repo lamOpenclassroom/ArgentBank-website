@@ -119,6 +119,39 @@ i.fa.fa-user-circle {  /*<= Ajouter */
   margin-right: 5px;
 }
 
+/* ajout style user */
+.display{
+  display: none;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.buttons{
+  display: flex;
+}
+
+.buttons-edit{
+  width: 150px;
+  margin-left: 5px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.input-edit{
+  margin-left: 10px;
+  height: 30px;
+  margin-top: 5px;
+}
+
+#style-text{
+  color: #FFF;
+}
+
 @media (min-width: 920px) {
   .hero {
     height: 400px;
