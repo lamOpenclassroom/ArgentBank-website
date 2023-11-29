@@ -4,6 +4,13 @@ import { myActionEdit } from "../store"
 
 function Edituser() {
     const dispatch = useDispatch();
+    const firstname = useSelector((state) => state.firstname); 
+    const lastname = useSelector((state) => state.lastname); 
+    const username = useSelector((state) => state.username);
+
+
+
+    //affiche le state showEdit
     useSelector((state) => state.showEdit)
 
     function modaleEdit() {
@@ -19,17 +26,17 @@ function Edituser() {
 
                 <div>
                     <label>User name :</label>
-                    <input type="text" className="input-edit" />
+                    <input type="text" value={username} className="input-edit" />
                 </div>
 
                 <div>
                     <label>First Name :</label>
-                    <input type="text" className="input-edit" />
+                    <input type="text" value={firstname} className="input-edit" disabled/>
                 </div>
                 
                 <div>
                     <label>Last Name :</label>
-                    <input type="text" className="input-edit" />
+                    <input type="text" value={lastname} className="input-edit" disabled/>
                 </div>
 
                 <div className="buttons">
