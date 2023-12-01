@@ -1,13 +1,16 @@
 import "../style/style.css"
 import { useSelector,useDispatch } from "react-redux" 
 import { myActionEdit } from "../store"
+import { useState } from "react";
 
 function Edituser() {
     const dispatch = useDispatch();
-    const firstname = useSelector((state) => state.firstname); 
-    const lastname = useSelector((state) => state.lastname); 
+    const firstname = useSelector((state) => state.firstname);
+    const lastname = useSelector((state) => state.lastname);
     const username = useSelector((state) => state.username);
 
+    const [newName, setnewName] = useState("")
+    const token = useSelector((state) => state.token);
 
 
     //affiche le state showEdit
@@ -15,9 +18,41 @@ function Edituser() {
 
     function modaleEdit() {
         //lancer l'action
-        dispatch(myActionEdit());       
+        dispatch(myActionEdit());
     }
 
+    const validName = async (event) => {
+        event.preventDefault();
+
+           await fetch('http://localhost:3001/api/v1/user/profile', {
+           method: 'PUT',
+               headers: {
+                "Accept": "application/json",
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+           },
+           body: JSON.stringify({userName:newName}), // Modèle de valeur pour le PUT et convertir newName en JSON.
+           }) 
+                .then(response => {
+                    console.log(response)
+                    if (response.ok) {
+                        dispatch({
+                            type: 'DEFIN_USERNAME',
+                            payload: {
+                            username: newName,
+                            firstname: firstname,
+                            lastname: lastname,
+                            },
+                        })
+                    } else {
+                            console.error('Erreur lors de l envoi du nouveau nom d utilisateur')
+                    }
+                    }
+                )
+                .catch(error => {console.log(error)}); 
+                setnewName('');
+    };
+    
     return (
         <div id="style-text">
           
@@ -26,7 +61,7 @@ function Edituser() {
 
                 <div>
                     <label>User name :</label>
-                    <input type="text" value={username} className="input-edit" />
+                    <input type="text" placeholder={username} value={newName} className="input-edit" onChange={(event)=>setnewName(event.target.value)}  required/>
                 </div>
 
                 <div>
@@ -40,8 +75,8 @@ function Edituser() {
                 </div>
 
                 <div className="buttons">
-                    <button  className='transaction-button button buttons-edit'>Save</button>
-                    <button onClick={modaleEdit} className='transaction-button button buttons-edit'>Cancel</button>
+                    <button  onClick={validName} className='transaction-button button buttons-edit'>Save</button>
+                    <button  onClick={modaleEdit} className='transaction-button button buttons-edit'>Cancel</button>
                 </div>
                 
 
