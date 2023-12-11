@@ -8,6 +8,7 @@ host: localhost:3001
 basePath: /api/v1
 schemes:
   - http
+
 paths:
   /user/login:
     post:
@@ -101,6 +102,121 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  # Ajout des Endpoints
+  # Obtenir toutes les transactions.
+  /user/profile/transactions:
+    get:
+      tags: 
+        - User Module
+      summary: Transactions
+      Description : API for transactions
+      Responses :
+      '200' :
+        Description : User transactions retrieved successfully
+        Shema :
+          $ref : ‘#/definitions/TransactionsResponse’
+      '400' :
+        Description : Invalid Fields
+      '500' :
+        Description : Internal Server Error
+  # Obtenir une transaction spécifique.
+  /user/profile/transactions/{transactionId}:
+    get:
+      tags: 
+        - User Module
+      summary: Specific transaction
+      Description : API for specific transaction
+      Responses :
+      '200' :
+        Description : User specific transaction retrieved successfully
+        Shema :
+          $ref : ‘#/definitions/SpecificTransactionResponse’
+      '400' :
+        Description : Invalid Fields
+      '500' :
+        Description : Internal Server Error
+  # Mettre à jour une information de type catégorie dans une transaction spécifique.
+  /user/profile/transactions/{transactionId}/category:
+    put:
+      security:
+        - Bearer: []
+      tags: 
+        - User Module
+      summary: transaction category API
+      Description : API for updating a transaction category
+      parameters:
+      - in: body
+        category: body
+        description: update transaction category
+        required: true
+        schema:
+          $ref: '#/definitions/TransactionCategory'
+      produces:
+        - application/json
+      Responses :
+      '200' :
+        Description : Selected category retrieved successfully
+        Shema :
+          $ref : ‘#/definitions/CategoryResponse’
+      '400' :
+        Description : Invalid Fields
+      '500' :
+        Description : Internal Server Error
+  # Modifier ou ajouter une information de type note dans une transaction spécifique.
+  /user/profile/transactions/{transactionId}/note:
+    put:
+      security:
+        - Bearer: []
+      tags: 
+        - User Module
+      summary: transaction note API
+      Description : API for updating or add a transaction note
+      parameters:
+      - in: body
+        category: body
+        description: update transaction note
+        required: true
+        schema:
+          $ref: '#/definitions/TransactionNote'
+      produces:
+        - application/json
+      Responses :
+      '200' :
+        Description : updating or add note successfully
+        Shema :
+          $ref : ‘#/definitions/NoteResponse’
+      '400' :
+        Description : Invalid Fields
+      '500' :
+        Description : Internal Server Error
+  # Supprimer une information de type note dans une transaction spécifique.
+  /user/profile/transactions/{transactionId}/note:
+    delete:
+      security:
+        - Bearer: []
+      tags: 
+        - User Module
+      summary: transaction note API
+      Description : API for delete a transaction note
+      parameters:
+      - in: body
+        category: body
+        description: delete transaction note
+        required: true
+        schema:
+          $ref: '#/definitions/TransactionNote'
+      produces:
+          - application/json
+      Responses :
+      '200' :
+        Description : updating or add note successfully
+        Shema :
+          $ref : ‘#/definitions/NoteResponse’
+      '400' :
+        Description : Invalid Fields
+      '500' :
+        Description : Internal Server Error
+  # Ajout des Endpoints
 securityDefinitions:
   Bearer:
     type: apiKey
