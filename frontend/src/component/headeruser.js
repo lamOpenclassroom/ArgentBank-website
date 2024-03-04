@@ -2,6 +2,7 @@ import Logobank from "../img/argentBankLogo.png"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from 'react';
+import "../style/header.css"
 
 function Headeruser() {
   const dispatch = useDispatch();

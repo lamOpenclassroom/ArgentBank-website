@@ -1,3 +1,5 @@
+import "../style/footer.css"
+
 function Footer() {
     return (
         <footer class="footer">
