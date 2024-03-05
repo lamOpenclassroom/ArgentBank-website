@@ -1,4 +1,4 @@
-import "../style/style.css"
+import "../style/mainsignin.css"
 import { useSelector } from "react-redux" 
 import { useDispatch } from "react-redux"
 import { useState,useEffect } from 'react';

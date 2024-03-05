@@ -25,3 +25,27 @@ export const main = [
         paragr: "We use top of the line encryption to make sure your data and money is always safe."
     }
 ] 
+
+export const mainuser = [
+    {
+        id: 1,
+        accountTitle: "Argent Bank Checking (x8349)",
+        accountAmount: "$2,082.79",
+        description: "Available Balance",
+        buttonTransaction: "View transactions"
+    },
+    {
+        id: 2,
+        accountTitle: "Argent Bank Savings (x6712)",
+        accountAmount: "$10,928.42",
+        description: "Available Balance",
+        buttonTransaction: "View transactions"
+    },
+    {
+        id: 3,
+        accountTitle: "Argent Bank Credit Card (x8349)",
+        accountAmount: "$184.30",
+        description: "Current Balance",
+        buttonTransaction: "View transactions"
+    }
+] 
