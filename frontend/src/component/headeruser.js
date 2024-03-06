@@ -30,8 +30,8 @@ function Headeruser() {
           });
  
           if (response.ok) {
-             const data = await response.json();
-             console.log(data);
+            const data = await response.json();
+            console.log(data);
             //Lancer l'action
              dispatch({  
               type: 'DEFIN_USERNAME',
@@ -41,7 +41,6 @@ function Headeruser() {
                 lastname: data.body.lastName,
               },
             });
-             
           } else {
              console.log("Erreur lors de la récupération du profil de l'utilisateur");
           }
@@ -49,9 +48,7 @@ function Headeruser() {
              console.log("Erreur lors de la récupération du profil de l'utilisateur");
           }
        };
-       
        getData();
-
     }
     }, [dispatch, token]);
 

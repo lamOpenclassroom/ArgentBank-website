@@ -17,7 +17,7 @@ function Header() {
             </Link>
             <div>
               <i class="fa fa-user-circle"></i>
-              <Link  class="main-nav-item" to="/signin">Sign In</Link>
+              <Link  class="main-nav-item" to="/login">Sign In</Link>
             </div>
           </nav>
         </header>

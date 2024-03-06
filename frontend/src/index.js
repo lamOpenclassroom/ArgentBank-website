@@ -13,8 +13,8 @@ ReactDOM.render(
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/signin" element={<Signin />} />
-                    <Route path="/signout" element={<User />} />
+                    <Route path="/login" element={<Signin />} />
+                    <Route path="/profil" element={<User />} />
                 </Routes>
             </Router>
         </React.StrictMode>

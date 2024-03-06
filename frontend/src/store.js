@@ -28,7 +28,7 @@ function reducer(state = initialState,action) {
             ...state,
             username: action.payload.username,
             firstname: action.payload.firstname,
-            lastname: action.payload.lastname,
+            lastname: action.payload.lastname
          };
          
          case 'EDIT':

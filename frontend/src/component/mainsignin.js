@@ -59,7 +59,7 @@ function Mainsignin() {
     useEffect(() => {
         if (token) {
             setTimeout(() => {
-                navigate("/signout");
+                navigate("/profil");
             }, 1000); 
          }
     }, [token, navigate]);

@@ -11,6 +11,9 @@ function Mainuser() {
     const firstname = useSelector((state) => state.firstname);
     const lastname = useSelector((state) => state.lastname);
     const showEdit = useSelector((state) => state.showEdit);
+    
+    const localstorage = localStorage.getItem("name") /*test localStorage*/
+
     console.log(showEdit)
 
     useEffect(() => {
@@ -37,20 +40,20 @@ function Mainuser() {
                     firstname: data.body.firstName,
                     lastname: data.body.lastName,
                   },
-                });
-
+                 });
               } else {
                  console.log("Erreur lors de la récupération du profil de l'utilisateur");
               }
               } catch (error) {
                  console.log("Erreur lors de la récupération du profil de l'utilisateur");
               }
-           };
-
+            };
+            
+            localStorage.setItem("name", firstname) /*test localStorage*/
+            
            getData();
-
         }
-    }, [dispatch, token]);
+    }, [dispatch, token,firstname]);
 
     function modaleEdit() {
         //Lancer l'action
@@ -63,7 +66,7 @@ function Mainuser() {
         <main class="main bg-dark">
             {showEdit ?
                 <div class="header">
-                    <h1>Welcome back<br />{firstname} {lastname} !</h1>
+                    <h1>Welcome back<br />{firstname} {localstorage} {lastname} !</h1>
                     <button onClick={modaleEdit} class="edit-button">Edit Name</button>
                 </div>
                 :
