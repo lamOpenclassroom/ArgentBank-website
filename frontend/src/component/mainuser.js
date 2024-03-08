@@ -1,9 +1,10 @@
 import { useDispatch, useSelector} from "react-redux"
-import { useEffect} from 'react';
-import Edituser from "./edituser";
+import { useEffect } from 'react';
 import { myActionEdit } from '../store';
 import {mainuser} from "../Data"
 import "../style/mainuser.css"
+import Edituser from "./edituser";
+import Account from "./account";
 
 function Mainuser() {
     const dispatch = useDispatch();
@@ -75,16 +76,7 @@ function Mainuser() {
 
             <h2 class="sr-only">Accounts</h2>
             {mainuser.map((item) => (
-            <section key={item.id} class="account">
-              <div class="account-content-wrapper">
-                    <h3 class="account-title">{item.accountTitle}</h3>
-                    <p class="account-amount">{item.accountAmount}</p>
-                    <p class="account-amount-description">{item.description}</p>
-              </div>
-              <div class="account-content-wrapper cta">
-                        <button class="transaction-button">{item.buttonTransaction}</button>
-              </div>
-                </section>
+                <Account id={item.id} accountTitle={item.accountTitle} accountAmount={item.accountAmount} description={item.description} buttonTransaction={item.buttonTransaction} />
             ))}
         </main>
     )

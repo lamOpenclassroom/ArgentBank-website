@@ -1,23 +1,28 @@
-import "../style/banner.css"
-import Banner from "./banner"
-import { main } from "../Data"
+import Banner from "./banner";
+import Bannertext from "./bannertext";
+import Mainhome from "./mainhome";
+import { main, bannertext } from "../Data";
 
 function Main() {
     return (
         <main>
             
-            <Banner/>
-               
+            {bannertext.map((item) => (
+                <section>
+                    <Banner image={item.image} />       
+                    <div >
+                        <Bannertext title={item.title} subtitle1={item.subtitle1} subtitle2={item.subtitle2} subtitle3={item.subtitle3} text={item.text} />
+                    </div>
+                </section>  
+            ))}
+            
             <section class="features">
                 <h2 class="sr-only">Features</h2>
                     {main.map((item) => (
-                        <div key={item.id} class="feature-item">
-                            <img src={item.img} alt={item.description} class="feature-icon" />
-                            <h3 class="feature-item-title">{item.title}</h3>
-                            <p>{item.paragr}</p>
-                        </div>
+                        <Mainhome key={item.id} image={item.img} description={item.description} title={item.title} paragr={item.paragr} />    
                     ))}  
             </section>
+            
         </main>
     ); 
 }

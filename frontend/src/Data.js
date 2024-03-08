@@ -1,7 +1,19 @@
 import Chaticon from "./img/icon-chat.png"
 import Moneyicon from "./img/icon-money.png"
 import Securityicon from "./img/icon-security.png"
+import ImageBanner from "./img/bank-tree.jpeg"
 
+export const bannertext = [
+    {
+        title: "Promoted Content",
+        subtitle1: "No fees.",
+        subtitle2: "No minimum deposit.",
+        subtitle3: "High interest rates.",
+        text: "Open a savings account with Argent Bank today!",
+        image: ImageBanner,
+        description: "Un pot avec de l'argent et une plante"
+    }
+]
 export const main = [
     {
         id: 1,

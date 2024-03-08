@@ -87,13 +87,10 @@ function Mainsignin() {
                         </div>
                         
                         <button type="submit" class="sign-in-button">Sign In</button>
-                    
                     </form>
                     <p id="erreur"></p>
                     <p id="connexion-valid"></p>
                 </section>
-            
-             
             </main>
         );
     
