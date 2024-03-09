@@ -2,16 +2,18 @@ import { legacy_createStore as createStore } from 'redux';
 
 // le state 
 const initialState = {
-   token: localStorage.getItem("mytoken"), 
+   token: "",
    username: "",
    firstname: "",
    lastname: "",
    showEdit: true,
+   checkIt: true,
 }
 
 // les actions
 export const myAction = (data) => ({ type: "LOGIN", payload: { token: data.body.token } })
 export const myActionEdit = () => ({ type: "EDIT" })
+export const rememberCheck = () => ({ type: "CHECKIT"}) 
 
 // le reducer
 function reducer(state = initialState,action) {
@@ -34,7 +36,14 @@ function reducer(state = initialState,action) {
              return {
               ...state,
               showEdit: !state.showEdit,
-         }
+          }
+       
+         case 'CHECKIT':
+            return {
+             ...state,
+               checkIt: !state.checkIt,
+               token : localStorage.getItem("mytoken")
+          }
        
          case 'LOGOUT':
           return initialState;

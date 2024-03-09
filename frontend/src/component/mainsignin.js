@@ -4,10 +4,11 @@ import { useDispatch } from "react-redux"
 import { useState,useEffect } from 'react';
 import { useNavigate } from "react-router-dom"
 import { myAction } from "../store";
+import { rememberCheck } from '../store';
 
 function Mainsignin() {
     //Remember
-    const [checkIt, setcheckIt] = useState(true);
+    const checkIt = useSelector((state) => state.checkIt)
     
     // States
     const token = useSelector((state) => state.token);
@@ -20,10 +21,12 @@ function Mainsignin() {
     //hook navigation
     const navigate = useNavigate()
 
-    //remember me
-    const rememberMe = () => {
-        setcheckIt(!checkIt) 
+    function remember(){
+        dispatch(rememberCheck())
         console.log(checkIt)
+        return(
+            checkIt ? localStorage.setItem("mytoken", token) : null //cherche a sauvegarder le token et quand il est chargé
+        )
     }
 
     // Fonction pour gérer la soumission du formulaire
@@ -56,7 +59,7 @@ function Mainsignin() {
                     document.getElementById("connexion-valid").innerHTML = ("Vous êtes bien connecté");
                     document.getElementById("erreur").innerHTML = "";
                     //Lancer l'action
-                    dispatch(myAction(data));  
+                    dispatch(myAction(data)); 
                 }   
             })
             .catch(error => {
@@ -64,19 +67,12 @@ function Mainsignin() {
             });
     };
     useEffect(() => {
-        if (token) {            
+        if (token) {
             setTimeout(() => {
                 navigate("/profil");
             }, 1000); 
         }
     }, [token, navigate]);
-    // useEffect(() => {
-    //     if (checkIt === true && token) {
-    //         localStorage.setItem("mytoken", token)
-    //     } else {
-    //         localStorage.setItem("mytoken", "")
-    //     }
-    // },[token,checkIt]) REVOIR la mise à jour du token dans le store
     
         return (
         
@@ -96,7 +92,7 @@ function Mainsignin() {
                         </div>
 
                         <div class="input-remember">
-                            <input type="checkbox" value={checkIt} id="remember-me" onClick={rememberMe} />
+                            <input type="checkbox" value={checkIt} id="remember-me" onClick={remember} />
                             <label for="remember-me">Remember me</label>
                         </div>
                         

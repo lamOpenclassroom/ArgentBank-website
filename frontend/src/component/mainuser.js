@@ -12,8 +12,6 @@ function Mainuser() {
     const firstname = useSelector((state) => state.firstname);
     const lastname = useSelector((state) => state.lastname);
     const showEdit = useSelector((state) => state.showEdit);
-    
-    /*const localstorage = localStorage.getItem("name") test localStorage*/
 
     console.log(showEdit)
 
