@@ -13,49 +13,45 @@ function Mainuser() {
     const lastname = useSelector((state) => state.lastname);
     const showEdit = useSelector((state) => state.showEdit);
     
-    const localstorage = localStorage.getItem("name") /*test localStorage*/
+    /*const localstorage = localStorage.getItem("name") test localStorage*/
 
     console.log(showEdit)
 
     useEffect(() => {
         if (token) {
-           const getData = async () => {
-              try {
-              const response = await fetch('http://localhost:3001/api/v1/user/profile', {
-                 method: 'POST',
-                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-
-              });
-
-              if (response.ok) {
-                 const data = await response.json();
-                 console.log(data);
-                //Lancer l'action
-                 dispatch({
-                  type: 'DEFIN_USERNAME',
-                  payload: {
-                    username: data.body.userName,
-                    firstname: data.body.firstName,
-                    lastname: data.body.lastName,
-                  },
-                 });
-              } else {
-                 console.log("Erreur lors de la récupération du profil de l'utilisateur");
-              }
-              } catch (error) {
-                 console.log("Erreur lors de la récupération du profil de l'utilisateur");
-              }
+            const getData = async () => {
+                try {
+                    const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`,
+                        },
+                    });
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log(data);
+                        //Lancer l'action
+                        dispatch({
+                            type: 'DEFIN_USERNAME',
+                            payload: {
+                                username: data.body.userName,
+                                firstname: data.body.firstName,
+                                lastname: data.body.lastName,
+                            },
+                        });
+                    } else {
+                        console.log("Erreur lors de la récupération du profil de l'utilisateur");
+                    }
+                } catch (error) {
+                    console.log("Erreur lors de la récupération du profil de l'utilisateur");
+                }
             };
-            
-            localStorage.setItem("name", firstname) /*test localStorage*/
-            
-           getData();
+        
+            getData();
         }
-    }, [dispatch, token,firstname]);
-
+    }, [dispatch, token]);
+    
     function modaleEdit() {
         //Lancer l'action
         dispatch(myActionEdit())
@@ -67,7 +63,7 @@ function Mainuser() {
         <main class="main bg-dark">
             {showEdit ?
                 <div class="header">
-                    <h1>Welcome back<br />{firstname} {localstorage} {lastname} !</h1>
+                    <h1>Welcome back<br />{firstname} {lastname} !</h1>
                     <button onClick={modaleEdit} class="edit-button">Edit Name</button>
                 </div>
                 :

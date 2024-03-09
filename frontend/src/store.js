@@ -2,11 +2,11 @@ import { legacy_createStore as createStore } from 'redux';
 
 // le state 
 const initialState = {
-   token: "", 
+   token: localStorage.getItem("mytoken"), 
    username: "",
    firstname: "",
    lastname: "",
-   showEdit:true,
+   showEdit: true,
 }
 
 // les actions
@@ -15,13 +15,12 @@ export const myActionEdit = () => ({ type: "EDIT" })
 
 // le reducer
 function reducer(state = initialState,action) {
-
     switch (action.type) { 
          case 'LOGIN':
          return {
             ...state,
-            token: action.payload.token
-         };
+            token: action.payload.token,
+          };
        
          case 'DEFIN_USERNAME':
          return {
@@ -38,7 +37,7 @@ function reducer(state = initialState,action) {
          }
        
          case 'LOGOUT':
-            return initialState;
+          return initialState;
          
          default:
            return state;
