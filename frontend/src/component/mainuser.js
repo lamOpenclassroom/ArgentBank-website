@@ -5,6 +5,7 @@ import {mainuser} from "../Data"
 import "../style/mainuser.css"
 import Edituser from "./edituser";
 import Account from "./account";
+import Mainsignin from "./mainsignin";
 
 function Mainuser() {
     const dispatch = useDispatch();
@@ -57,6 +58,7 @@ function Mainuser() {
     }
 
     return (
+        (!token ? <Mainsignin/> :
         <main class="main bg-dark">
             {showEdit ?
                 <div class="header">
@@ -72,6 +74,7 @@ function Mainuser() {
                 <Account id={item.id} accountTitle={item.accountTitle} accountAmount={item.accountAmount} description={item.description} buttonTransaction={item.buttonTransaction} />
             ))}
         </main>
+        )
     )
 }
 

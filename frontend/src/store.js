@@ -58,7 +58,7 @@ function reducer(state = initialState,action) {
 //creer le store
 export const store = createStore(reducer);
 
- if (localStorage.getItem("mytoken") != null) {
+if (localStorage.getItem("mytoken") != null) {
     initialState.token = localStorage.getItem("mytoken")
 } else {
     initialState.token = localStorage.removeItem("mytoken");

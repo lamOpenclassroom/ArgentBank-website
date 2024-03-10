@@ -2,7 +2,8 @@ import Logobank from "../img/argentBankLogo.png"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from 'react';
-import "../style/header.css"
+import "../style/header.css";
+import Header from "./header";
 
 function Headeruser() {
   const dispatch = useDispatch();
@@ -50,10 +51,12 @@ function Headeruser() {
           }
        };
        getData();
-    }
+    } 
     }, [dispatch, token]);
 
-    return (
+  return (
+    
+    (!token ? <Header/>:
       <div>
         <header >
           <nav class="main-nav">
@@ -79,7 +82,8 @@ function Headeruser() {
             </div>
           </nav>
         </header>
-      </div>
+    </div >
+    )
     );
 }
   
