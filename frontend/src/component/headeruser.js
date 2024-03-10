@@ -11,6 +11,7 @@ function Headeruser() {
   const username = useSelector((state) => state.username); 
   
   const userLogout = () => { //modifier le token à chaque déconnexion
+    localStorage.removeItem("mytoken");
     dispatch({ // Enregistrement du token dans le store
       type: 'LOGOUT',
     });

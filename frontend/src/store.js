@@ -18,11 +18,11 @@ export const rememberCheck = () => ({ type: "CHECKIT"})
 // le reducer
 function reducer(state = initialState,action) {
     switch (action.type) { 
-         case 'LOGIN':
+       case 'LOGIN':
          return {
             ...state,
             token: action.payload.token,
-          };
+         } 
        
          case 'DEFIN_USERNAME':
          return {
@@ -33,20 +33,22 @@ function reducer(state = initialState,action) {
          };
          
          case 'EDIT':
-             return {
-              ...state,
-              showEdit: !state.showEdit,
-          }
+            return {
+            ...state,
+            showEdit: !state.showEdit,
+         }
        
          case 'CHECKIT':
-            return {
-             ...state,
-               checkIt: !state.checkIt,
-               token : localStorage.getItem("mytoken")
-          }
+         return {
+            ...state,
+            checkIt: !state.checkIt,
+            }
        
          case 'LOGOUT':
-          return initialState;
+          return {
+             ...state,
+             token: "",
+          };
          
          default:
            return state;
@@ -55,3 +57,9 @@ function reducer(state = initialState,action) {
 
 //creer le store
 export const store = createStore(reducer);
+
+ if (localStorage.getItem("mytoken") != null) {
+    initialState.token = localStorage.getItem("mytoken")
+} else {
+    initialState.token = localStorage.removeItem("mytoken");
+}

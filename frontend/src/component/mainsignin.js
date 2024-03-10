@@ -21,12 +21,9 @@ function Mainsignin() {
     //hook navigation
     const navigate = useNavigate()
 
+    //change l'état de mon state global checkIt
     function remember(){
-        dispatch(rememberCheck())
-        console.log(checkIt)
-        return(
-            checkIt ? localStorage.setItem("mytoken", token) : null //cherche a sauvegarder le token et quand il est chargé
-        )
+        dispatch(rememberCheck())  
     }
 
     // Fonction pour gérer la soumission du formulaire
@@ -59,7 +56,8 @@ function Mainsignin() {
                     document.getElementById("connexion-valid").innerHTML = ("Vous êtes bien connecté");
                     document.getElementById("erreur").innerHTML = "";
                     //Lancer l'action
-                    dispatch(myAction(data)); 
+                    dispatch(
+                        myAction(data));
                 }   
             })
             .catch(error => {
@@ -70,9 +68,12 @@ function Mainsignin() {
         if (token) {
             setTimeout(() => {
                 navigate("/profil");
-            }, 1000); 
-        }
+            }, 1000);
+        } 
     }, [token, navigate]);
+
+    (checkIt !== false) ? localStorage.removeItem("mytoken") : localStorage.setItem("mytoken", token)
+    //au moment ou je rafraichis la page, faire disparaitre les données de l'utilisateur.
     
         return (
         
