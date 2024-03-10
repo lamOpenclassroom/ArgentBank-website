@@ -56,7 +56,7 @@ function Headeruser() {
 
   return (
     
-    (!token ? <Header/>:
+    (!token ? <Header/> :
       <div>
         <header >
           <nav class="main-nav">
@@ -68,18 +68,18 @@ function Headeruser() {
               />
               <h1 class="sr-only">Argent Bank</h1>
             </Link>
-            <div>
-              <a class="main-nav-item" href="./user.html">
-                <i class="fa fa-user-circle"></i>
-                {username}
-              </a>
-              <Link class="main-nav-item" to="/" onClick={userLogout}>
-                <a class="main-nav-item" href="./index.html">
-                <i class="fa fa-sign-out"></i>
-                  Sign Out
+              <div> 
+                <a class="main-nav-item" href="./user.html">
+                  <i class="fa fa-user-circle"></i>
+                  {username}
                 </a>
-              </Link>
-            </div>
+                <Link class="main-nav-item" to="/" onClick={userLogout}>
+                  <a class="main-nav-item" href="./index.html">
+                  <i class="fa fa-sign-out"></i>
+                    Sign Out
+                  </a>
+                </Link>
+              </div>  
           </nav>
         </header>
     </div >

@@ -6,11 +6,11 @@ function Home() {
 <h1>HOME</h1>
   return (
     <div>
-        <body>
-          <Header />
-          <Main />
-          <Footer />
-        </body>
+      <body>
+        <Header />
+        <Main />
+        <Footer />
+      </body>
   </div>
   );
 }
