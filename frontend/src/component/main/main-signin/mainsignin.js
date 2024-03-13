@@ -1,10 +1,10 @@
-import "../style/mainsignin.css"
+import "./mainsignin.css"
 import { useSelector } from "react-redux" 
 import { useDispatch } from "react-redux"
 import { useState,useEffect } from 'react';
 import { useNavigate } from "react-router-dom"
-import { myAction } from "../store";
-import { rememberCheck } from '../store';
+import { myAction } from "../../../store";
+import { rememberCheck } from '../../../store';
 
 function Mainsignin() {
     //Remember

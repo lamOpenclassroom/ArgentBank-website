@@ -1,6 +1,6 @@
-import Headeruser from "../component/headeruser"
-import Mainsignin from "../component/mainsignin"
-import Footer from "../component/footer"
+import Headeruser from "../component/header/headeruser"
+import Mainsignin from "../component/main/main-signin/mainsignin"
+import Footer from "../component/footer/footer"
 
 function Signin() {
     return (

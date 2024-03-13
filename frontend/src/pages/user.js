@@ -1,6 +1,6 @@
-import Headeruser from "../component/headeruser"
-import Mainuser from "../component/mainuser"
-import Footer from "../component/footer"
+import Headeruser from "../component/header/headeruser"
+import Mainuser from "../component/main/main-user/mainuser"
+import Footer from "../component/footer/footer"
 
 function User() {
     return (

@@ -1,8 +1,8 @@
-import Logobank from "../img/argentBankLogo.png"
+import Logobank from "../../img/argentBankLogo.png"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from 'react';
-import "../style/header.css";
+import "./header.css";
 import Header from "./header";
 
 function Headeruser() {

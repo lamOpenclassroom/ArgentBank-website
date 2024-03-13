@@ -1,4 +1,6 @@
-function Mainhome({key, image, description, title, paragr}) {
+import "../main-user/mainuser.css"
+
+function Mainhome({ key, image, description, title, paragr }) {
     return (
         <div key={key} class="feature-item">
             <img src={image} alt={description} class="feature-icon" />

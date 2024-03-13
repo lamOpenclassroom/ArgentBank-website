@@ -1,11 +1,11 @@
 import { useDispatch, useSelector} from "react-redux"
 import { useEffect } from 'react';
-import { myActionEdit } from '../store';
-import {mainuser} from "../Data"
-import "../style/mainuser.css"
-import Edituser from "./edituser";
-import Account from "./account";
-import Mainsignin from "./mainsignin";
+import { myActionEdit } from '../../../store';
+import {mainuser} from "../../../Data"
+import "./mainuser.css"
+import Edituser from "../../edit-user/edituser";
+import Account from "../../main/main-user/account";
+import Mainsignin from "../main-signin/mainsignin";
 
 function Mainuser() {
     const dispatch = useDispatch();

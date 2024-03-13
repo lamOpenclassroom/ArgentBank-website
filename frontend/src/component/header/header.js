@@ -1,8 +1,8 @@
-import Logobank from "../img/argentBankLogo.png"
+import Logobank from "../../img/argentBankLogo.png"
 import { Link } from 'react-router-dom'
-import "../style/header.css"
+import "./header.css"
 import { useSelector, useDispatch } from "react-redux";
-import  Connect from "./connect";
+import HeaderConnect from "./headerConnect";
 
 function Header() {
   const token = useSelector((state) => state.token);
@@ -41,10 +41,10 @@ function Header() {
                     Sign Out
                   </a>
                 </Link>
-                <Connect/>
+                <HeaderConnect/>
               </div>
                 :
-                <Connect/>
+                <HeaderConnect/>
               }
           </nav>
         </header>

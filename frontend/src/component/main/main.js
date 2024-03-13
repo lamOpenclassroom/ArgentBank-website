@@ -1,7 +1,8 @@
-import Banner from "./banner";
-import Bannertext from "./bannertext";
-import Mainhome from "./mainhome";
-import { main, bannertext } from "../Data";
+import Banner from "../banner/banner";
+import Bannertext from "../banner/bannertext";
+import Mainhome from "./main-home/mainhome";
+import { main, bannertext } from "../../Data";
+import "./main-signin/mainsignin.css"
 
 function Main() {
     return (

@@ -1,4 +1,4 @@
-import "../style/banner.css"
+import "./banner.css"
 
 function Bannertext({ title, subtitle1, subtitle2, subtitle3, text }) {
     return (

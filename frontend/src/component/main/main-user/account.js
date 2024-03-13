@@ -1,3 +1,5 @@
+import "./mainuser.css"
+
 function Account({ id, accountTitle, accountAmount, description, buttonTransaction }) {
     return (
             <section key={id} class="account">

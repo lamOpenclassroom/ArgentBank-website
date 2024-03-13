@@ -1,6 +1,6 @@
-import "../style/edituser.css"
+import "./edituser.css"
 import { useSelector,useDispatch } from "react-redux" 
-import { myActionEdit } from "../store"
+import { myActionEdit } from "../../store"
 import { useState } from "react";
 
 function Edituser() {
