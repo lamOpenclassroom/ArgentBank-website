@@ -31,17 +31,16 @@ function Header() {
             </Link>
             {token ?
               <div  class="main-nav"> 
-                <a class="main-nav-item" href="./user.html">
+                <Link class="main-nav-item" to="./login">
                   <i class="fa fa-user-circle"></i>
                   {username}
-                </a>
+                </Link>
                 <Link class="main-nav-item" to="/" onClick={userLogout}>
-                  <a class="main-nav-item" href="./index.html">
+                  <a class="main-nav-item" href="./index.html"> 
                   <i class="fa fa-sign-out"></i>
                     Sign Out
                   </a>
-                </Link>
-                <HeaderConnect/>
+                </Link> 
               </div>
                 :
                 <HeaderConnect/>
