@@ -68,18 +68,20 @@ function Headeruser() {
               />
               <h1 class="sr-only">Argent Bank</h1>
             </Link>
-              <div> 
-                <a class="main-nav-item" href="./user.html">
+            <div> 
+              <Link to="/login">
+                <a class="main-nav-item" href="./html">
                   <i class="fa fa-user-circle"></i>
                   {username}
                 </a>
-                <Link class="main-nav-item" to="/" onClick={userLogout}>
+              </Link>
+              <Link class="main-nav-item" to="/" onClick={userLogout}>
                   <a class="main-nav-item" href="./index.html">
                   <i class="fa fa-sign-out"></i>
                     Sign Out
                   </a>
-                </Link>
-              </div>  
+              </Link>
+            </div>  
           </nav>
         </header>
     </div >

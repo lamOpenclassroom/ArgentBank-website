@@ -109,79 +109,79 @@ paths:
       security:
         - Bearer: []
       tags: 
-        - User Account
+        - User Accounts
       summary: Accounts
-      Description : API for accounts
-      Responses :
-      '200' :
-        Description : User accounts retrieved successfully
-        Shema :
-          $ref : ‘#/definitions/AccountsResponse’
-      '400' :
-        Description : Invalid Fields
-      '500' :
-        Description : Internal Server Error
+      Description: API for accounts
+      Responses:
+        '200':
+          Description: User accounts retrieved successfully
+          Shema:
+            $ref: '#/definitions/AccountsResponse'
+        '400':
+          Description: Invalid Fields
+        '500':
+          Description: Internal Server Error
   # Obtenir un compte spécifique.
   /accounts/{accountId}:
     get:
       security:
         - Bearer: []
       tags: 
-        - User Account
+        - User Accounts
       summary: Specific account
-      Description : API for specific account
-      Responses :
-      '200' :
-        Description : User specific account retrieved successfully
-        Shema :
-          $ref : ‘#/definitions/SpecificAccountResponse’
-      '400' :
-        Description : Invalid Fields
-      '500' :
-        Description : Internal Server Error
-  # Obtenir toutes les transactions du compte spécifique
-  /accounts/{accountId}/transactions:
+      Description: API for specific account
+      Responses:
+        '200':
+          Description: User specific account retrieved successfully
+          Shema:
+            $ref:'4#/definitions/SpecificAccountResponse'
+        '400':
+          Description: Invalid Fields
+        '500':
+          Description: Internal Server Error
+  # Obtenir toutes les transactions.
+  /transactions:
     get:
-    security:
+      security:
         - Bearer: []
       tags: 
-        - User Transaction
+        - User Transactions
       summary: Transactions
       Description : API for transactions
       Responses :
       '200' :
         Description : User transactions retrieved successfully
         Shema :
-          $ref : ‘#/definitions/TransactionsResponse’
+          $ref : '#/definitions/TransactionsResponse'
       '400' :
         Description : Invalid Fields
       '500' :
         Description : Internal Server Error
   # Obtenir une transaction spécifique.
-  /accounts/{accountId}/transactions/{transactionId}:
+  /transactions/{transactionId}:
     get:
       security:
         - Bearer: []
       tags: 
-        - User Transaction
+        - User Transactions
       summary: Specific transaction
       Description : API for specific transaction
       Responses :
       '200' :
         Description : User specific transaction retrieved successfully
         Shema :
-          $ref : ‘#/definitions/SpecificTransactionResponse’
+          $ref : '#/definitions/SpecificTransactionResponse'
       '400' :
         Description : Invalid Fields
       '500' :
         Description : Internal Server Error
   # Mettre à jour une information de type catégorie dans une transaction spécifique.
-  /accounts/{accountId}/transactions/{transactionId}/category:
+  /transactions/{transactionId}/category:
     put:
       security:
         - Bearer: []
       tags: 
-        - User Transaction
+        - User Transactions
       summary: transaction category API
       Description : API for updating a transaction category
       parameters:
@@ -197,18 +197,18 @@ paths:
       '200' :
         Description : Selected category retrieved successfully
         Shema :
-          $ref : ‘#/definitions/CategoryResponse’
+          $ref : '#/definitions/CategoryResponse'
       '400' :
         Description : Invalid Fields
       '500' :
         Description : Internal Server Error
   # Modifier ou ajouter une information de type note dans une transaction spécifique.
-  /accounts/{accountId}/transactions/{transactionId}/note:
+  /transactions/{transactionId}/note:
     put:
       security:
         - Bearer: []
       tags: 
-        - User Transaction
+        - User Transactions
       summary: transaction note API
       Description : API for updating or add a transaction note
       parameters:
@@ -224,13 +224,13 @@ paths:
       '200' :
         Description : updating or add note successfully
         Shema :
-          $ref : ‘#/definitions/NoteResponse’
+          $ref : '#/definitions/NoteResponse'
       '400' :
         Description : Invalid Fields
       '500' :
         Description : Internal Server Error
   # Supprimer une information de type note dans une transaction spécifique.
-  /accounts/{accountId}/transactions/{transactionId}/note:
+  /transactions/{transactionId}/note:
     delete:
       security:
         - Bearer: []
@@ -251,7 +251,7 @@ paths:
       '200' :
         Description : updating or add note successfully
         Shema :
-          $ref : ‘#/definitions/NoteResponse’
+          $ref : '#/definitions/NoteResponse'
       '400' :
         Description : Invalid Fields
       '500' :
