@@ -102,57 +102,23 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  # Ajout des Endpoints
-  # Obtenir tous les comptes.
-  /accounts:
+
+  #----------------------------------------- Ajout des Endpoints-------------------------------------#
+  
+  # Obtenir toutes les transactions provenant d'un compte spécifique.
+  /{accountId}/transactions:
     get:
       security:
         - Bearer: []
       tags: 
-        - User Accounts
-      summary: Accounts
-      Description: API for accounts
-      Responses:
-        '200':
-          Description: User accounts retrieved successfully
-          Shema:
-            $ref: '#/definitions/AccountsResponse'
-        '400':
-          Description: Invalid Fields
-        '500':
-          Description: Internal Server Error
-  # Obtenir un compte spécifique.
-  /accounts/{accountId}:
-    get:
-      security:
-        - Bearer: []
-      tags: 
-        - User Accounts
-      summary: Specific account
-      Description: API for specific account
-      Responses:
-        '200':
-          Description: User specific account retrieved successfully
-          Shema:
-            $ref:'4#/definitions/SpecificAccountResponse'
-        '400':
-          Description: Invalid Fields
-        '500':
-          Description: Internal Server Error
-  # Obtenir toutes les transactions.
-  /transactions:
-    get:
-      security:
-        - Bearer: []
-      tags: 
-        - User Transactions
-      summary: Transactions
-      Description : API for transactions
+        - User Transaction
+      summary: Transactions by Specific Account
+      Description : API for getting all transactions in specific account
       Responses :
       '200' :
         Description : User transactions retrieved successfully
         Shema :
-          $ref : '#/definitions/TransactionsResponse'
+          $ref : '#/definitions/ApiResponse'
       '400' :
         Description : Invalid Fields
       '500' :
@@ -163,100 +129,54 @@ paths:
       security:
         - Bearer: []
       tags: 
-        - User Transactions
-      summary: Specific transaction
-      Description : API for specific transaction
+        - User Transaction
+      summary: API for Specific transaction
+      Description : getting specific transaction
+      parameters:
+        - name: body
+          in: body
+          description: ID of the transaction to retrieve
+          required: true
+          schema:
+            $ref: '#/definitions/Description'
+          type: string
       Responses :
       '200' :
         Description : User specific transaction retrieved successfully
         Shema :
-          $ref : '#/definitions/SpecificTransactionResponse'
+          $ref : '#/definitions/ApiResponse'
       '400' :
         Description : Invalid Fields
       '500' :
         Description : Internal Server Error
-  # Mettre à jour une information de type catégorie dans une transaction spécifique.
-  /transactions/{transactionId}/category:
+  
     put:
-      security:
+      security: 
         - Bearer: []
-      tags: 
-        - User Transactions
-      summary: transaction category API
-      Description : API for updating a transaction category
-      parameters:
-      - in: body
-        category: body
-        description: update transaction category
-        required: true
-        schema:
-          $ref: '#/definitions/TransactionCategory'
-      produces:
-        - application/json
-      Responses :
-      '200' :
-        Description : Selected category retrieved successfully
-        Shema :
-          $ref : '#/definitions/CategoryResponse'
-      '400' :
-        Description : Invalid Fields
-      '500' :
-        Description : Internal Server Error
-  # Modifier ou ajouter une information de type note dans une transaction spécifique.
-  /transactions/{transactionId}/note:
-    put:
-      security:
-        - Bearer: []
-      tags: 
-        - User Transactions
-      summary: transaction note API
-      Description : API for updating or add a transaction note
-      parameters:
-      - in: body
-        category: body
-        description: update transaction note
-        required: true
-        schema:
-          $ref: '#/definitions/TransactionNote'
-      produces:
-        - application/json
-      Responses :
-      '200' :
-        Description : updating or add note successfully
-        Shema :
-          $ref : '#/definitions/NoteResponse'
-      '400' :
-        Description : Invalid Fields
-      '500' :
-        Description : Internal Server Error
-  # Supprimer une information de type note dans une transaction spécifique.
-  /transactions/{transactionId}/note:
-    delete:
-      security:
-        - Bearer: []
-      tags: 
+      tags:
         - User Transaction
-      summary: transaction note API
-      Description : API for delete a transaction note
+      summary: Specific Transaction API
+      description: API for updating or add a specific transaction
       parameters:
-      - in: body
-        category: body
-        description: delete transaction note
-        required: true
-        schema:
-          $ref: '#/definitions/TransactionNote'
+        - in: body
+          name: body
+          description: Update transaction attributes
+          required: true
+          schema:
+            $ref: '#/definitions/Transaction'
       produces:
-          - application/json
-      Responses :
-      '200' :
-        Description : updating or add note successfully
-        Shema :
-          $ref : '#/definitions/NoteResponse'
-      '400' :
-        Description : Invalid Fields
-      '500' :
-        Description : Internal Server Error
-  # Ajout des Endpoints
+        - application/json
+      responses:
+        '200':
+          description: The transaction information has been updated successfully.
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  # Mettre à jour une information dans une transaction spécifique.
+  #----------------------------------------- Ajout des Endpoints-------------------------------------#
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -312,3 +232,22 @@ definitions:
     properties:
       userName:
         type: string
+  Transaction:
+    type: object
+    properties:
+      id:
+        type: string
+      description:
+        type: string
+  Description:
+    type: object
+    properties:
+      status:
+        type: integer
+      body:
+        type: object
+        properties:
+          id:
+            type: string
+          Description:
+            type: string
