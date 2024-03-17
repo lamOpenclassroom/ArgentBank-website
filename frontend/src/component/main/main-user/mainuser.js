@@ -5,7 +5,7 @@ import {mainuser} from "../../../Data"
 import "./mainuser.css"
 import Edituser from "../../edit-user/edituser";
 import Account from "../../main/main-user/account";
-import Mainsignin from "../main-signin/mainsignin";
+// import Mainsignin from "../main-signin/mainsignin";
 
 function Mainuser() {
     const dispatch = useDispatch();
@@ -58,7 +58,7 @@ function Mainuser() {
     }
 
     return (
-        (!token ? <Mainsignin/> :
+        (!token ? <p>loading...</p> :
         <main class="main bg-dark">
             {showEdit ?
                 <div class="header">

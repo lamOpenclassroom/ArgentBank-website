@@ -5,13 +5,9 @@ import { useState } from "react";
 
 function Edituser() {
     const dispatch = useDispatch();
-    const firstname = useSelector((state) => state.firstname);
-    const lastname = useSelector((state) => state.lastname);
-    const username = useSelector((state) => state.username);
+    const {firstname,lastname,username,token} = useSelector((state) => state);
 
     const [newName, setnewName] = useState("")
-    const token = useSelector((state) => state.token);
-
 
     //affiche le state showEdit
     useSelector((state) => state.showEdit)

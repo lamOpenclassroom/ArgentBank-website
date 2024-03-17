@@ -1,6 +1,5 @@
 import "./mainsignin.css"
-import { useSelector } from "react-redux" 
-import { useDispatch } from "react-redux"
+import { useSelector,useDispatch } from "react-redux" 
 import { useState,useEffect } from 'react';
 import { useNavigate } from "react-router-dom"
 import { myAction } from "../../../store";
@@ -72,7 +71,7 @@ function Mainsignin() {
         } 
     }, [token, navigate]);
 
-    (checkIt !== false) ? localStorage.removeItem("mytoken") : localStorage.setItem("mytoken", token)
+    (checkIt) ? localStorage.removeItem("mytoken") : localStorage.setItem("mytoken", token)
     //au moment ou je rafraichis la page, faire disparaitre les données de l'utilisateur.
     
         return (
