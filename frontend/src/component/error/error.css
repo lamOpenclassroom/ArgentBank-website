@@ -1,0 +1,19 @@
+.bloc-message {
+    position: relative;
+    background-color: rgba(125, 130, 195, 0.208);
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    height: 100vh;
+    align-content: center;
+    justify-content: center;
+}
+#message-retour{
+    position: absolute;
+    left: 40px;
+    font-size: 2rem;
+    margin-top: 20px;
+}
+.message-title{
+    font-size: 5rem;
+}
